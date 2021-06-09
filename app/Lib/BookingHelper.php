@@ -14,7 +14,7 @@ class BookingHelper
             $booking = Booking::where('user_id', '=', $supplier_id)
             ->leftJoin('states', 'states.id','=', 'bookings.state_id')
             ->leftJoin('cities', 'cities.id','=', 'bookings.city_id')
-            ->orderby('states.name')
+            ->orderby('bookings.created_at')
             ->get($columns)
             ->toArray();
 
