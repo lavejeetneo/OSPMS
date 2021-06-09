@@ -38,3 +38,6 @@ php artisan migrate
 
 * run seeder :
 php artisan db:seed
+
+* create store link for file storage
+php artisan storage:link
