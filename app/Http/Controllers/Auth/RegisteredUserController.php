@@ -7,9 +7,9 @@ use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
+use App\Http\Requests\StorUserRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\Rules;
 use App\Lib\StateHelper;
 use App\Models\OxygenCylinder;
 use DB;
@@ -36,22 +36,8 @@ class RegisteredUserController extends Controller
      *
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function store(Request $request)
+    public function store(StorUserRequest $request)
     {
-        
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'gender' => 'required',
-            'age' => 'required',
-            'aadhar_num' => 'required',
-            'idproof' => 'required|image|mimes:jpeg,png,jpg|max:2048',
-            'address' => 'required',
-            'state' => 'required',
-            'phone_num' => 'required',
-            'supplier_city' => 'required',
-            'password' => ['required', Rules\Password::defaults()],
-        ]);
 
         try {
             DB::beginTransaction();
