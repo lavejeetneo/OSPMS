@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Crud;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreBookingRequest;
 use App\Lib\StateHelper;
 use App\Lib\ConsumerHelper;
 use App\Lib\BookingHelper;
@@ -69,23 +70,8 @@ class BookingController extends Controller
         }
     }
 
-    public function store(Request $request)
+    public function store(StoreBookingRequest $request)
     {
-        $request->validate([
-            'consumer_name' => 'required',
-            'consumer_state' => 'required',
-            'consumer_city' => 'required',
-            'supplier_id' => 'required',
-            'consumer_gender' => 'required',
-            'consumer_age' => 'required',
-            'consumer_aadhar_num' => 'required',
-            'consumer_idproof' => 'required|image|mimes:jpeg,png,jpg|max:2048',
-            'is_covid_poritive' => 'required',
-            'consumer_address' => 'required',
-            'consumer_phone_num' => 'required',
-            'book_oxygen_cylinder' => 'required',
-        ]);
-
         try {
 
             $res = BookingHelper::createBooking($request);

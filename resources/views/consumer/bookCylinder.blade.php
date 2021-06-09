@@ -96,6 +96,9 @@
                     <label htmlFor="datepicker">Date of Tested Covid Positive</label>
                     <input type="text" name ="covid_positive_date" class="form-control" id="datepicker"/>
                 </div>
+                    @error('covid_positive_date')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
                 <div class="mb-3">
                     <label for="exampleFormControlTextarea1" class="form-label">Address</label>
                     <textarea name="consumer_address" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
