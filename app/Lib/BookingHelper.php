@@ -43,7 +43,7 @@ class BookingHelper
                 'gender' => $request->consumer_gender,
                 'age' => $request->consumer_age,
                 'addar_number' => $request->consumer_aadhar_num,
-                'id_proof' => $imageName,
+                'id_proof' => 'storage/images/consumer/'.$imageName,
                 'is_covid_positve' => $request->is_covid_poritive,
                 'covid_positive_date' => date("Y-m-d", strtotime($request->covid_positive_date)),
                 'address' => $request->consumer_address,
@@ -63,7 +63,7 @@ class BookingHelper
         }
     }
 
-    public static function updateBooking($booking_id, $updateData) : object
+    public static function updateBooking($booking_id, $updateData) : bool
     {
         try {
 
